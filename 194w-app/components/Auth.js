@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { supabase } from "../lib/supabase";
+import Theme from "@/src/theme/theme";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -91,48 +92,51 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: "20%",
-    padding: 30,
+    marginVertical: Theme.spacing.xl,
+    padding: Theme.spacing.lg,
     minWidth: "85%",
-    backgroundColor: "#526AA6",
-    borderRadius: 40,
+    backgroundColor: Theme.colors.primary[400],
+    borderRadius: Theme.radius.xl,
   },
   verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: Theme.spacing.xs,
+    paddingBottom: Theme.spacing.xs,
     alignSelf: "stretch",
   },
   mt20: {
-    marginTop: 20,
+    marginTop: Theme.spacing.md,
   },
   inputText: {
-    backgroundColor: "white",
-    borderRadius: 20,
+    backgroundColor: Theme.colors.white,
+    borderRadius: Theme.radius.lg,
     minHeight: 50,
-    padding: 20,
-    color: "black",
-    fontSize: 16,
+    padding: Theme.spacing.md,
+    color: Theme.colors.text.primary,
+    fontSize: Theme.typography.sizes.md,
     fontFamily: "Helvetica",
   },
   inputLabel: {
     minHeight: 30,
-    paddingLeft: 10,
-    color: "white",
-    fontSize: 20,
-    marginTop: 20,
+    paddingLeft: Theme.spacing.sm,
+    color: Theme.colors.text.inverse,
+    fontSize: Theme.typography.sizes.lg,
+    marginTop: Theme.spacing.md,
     fontFamily: "Helvetica-Bold",
   },
   button: {
-    backgroundColor: "white",
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 20,
+    backgroundColor: Theme.colors.button.primary.background,
+    paddingVertical: Theme.spacing.sm,
+    paddingHorizontal: Theme.spacing.lg,
+    borderRadius: Theme.radius.lg,
     alignItems: "center",
     justifyContent: "center",
   },
+  disabledButton: {
+    opacity: 0.7,
+  },
   buttonText: {
-    color: "#344A66",
-    fontSize: 20,
+    color: Theme.colors.button.primary.text,
+    fontSize: Theme.typography.sizes.lg,
     fontFamily: "Helvetica-Bold",
   },
 });
