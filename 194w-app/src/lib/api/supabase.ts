@@ -2,12 +2,15 @@ import { AppState } from "react-native";
 import "react-native-url-polyfill/auto";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient } from "@supabase/supabase-js";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env";  // load from .env
 
-const supabaseUrl = "https://pjzgrltejhuodohksobs.supabase.co";
-const supabaseAnonKey =
-  "REDACTED";
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+// leaving commented out for now as i am updating .env - andrea
+// const supabaseUrl = "https://pjzgrltejhuodohksobs.supabase.co";
+// const supabaseAnonKey =
+//  "REDACTED";
+
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
     storage: AsyncStorage,
     autoRefreshToken: true,
