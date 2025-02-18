@@ -10,7 +10,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env";  // load from .env
 // const supabaseAnonKey =
 //  "REDACTED";
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+export const supabase = createClient( `${SUPABASE_URL}`, `${SUPABASE_ANON_KEY}`, { // supabaseUrl, supabaseAnonKey, { 
   auth: {
     storage: AsyncStorage,
     autoRefreshToken: true,
