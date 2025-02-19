@@ -2,22 +2,27 @@ import { AppState } from "react-native";
 import "react-native-url-polyfill/auto";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient } from "@supabase/supabase-js";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env";  // load from .env
-
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env"; // load from .env
 
 // leaving commented out for now as i am updating .env - andrea
-// const supabaseUrl = "https://pjzgrltejhuodohksobs.supabase.co";
-// const supabaseAnonKey =
-//  "REDACTED";
+// temp uncommented out bc the app wouldnt load :( - em
+const supabaseUrl = "https://pjzgrltejhuodohksobs.supabase.co";
+const supabaseAnonKey =
+  "REDACTED";
 
-export const supabase = createClient( `${SUPABASE_URL}`, `${SUPABASE_ANON_KEY}`, { // supabaseUrl, supabaseAnonKey, { 
-  auth: {
-    storage: AsyncStorage,
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: false,
-  },
-});
+export const supabase = createClient(
+  `${SUPABASE_URL}`,
+  `${SUPABASE_ANON_KEY}`,
+  {
+    // supabaseUrl, supabaseAnonKey, {
+    auth: {
+      storage: AsyncStorage,
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: false,
+    },
+  }
+);
 
 // Tells Supabase Auth to continuously refresh the session automatically
 // if the app is in the foreground. When this is added, you will continue
