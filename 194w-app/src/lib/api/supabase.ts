@@ -4,12 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@env"; // load from .env
 
-// leaving commented out for now as i am updating .env - andrea
-// temp uncommented out bc the app wouldnt load :( - em
-const supabaseUrl = "https://pjzgrltejhuodohksobs.supabase.co";
-const supabaseAnonKey =
-  "REDACTED";
-
 export const supabase = createClient(
   `${SUPABASE_URL}`,
   `${SUPABASE_ANON_KEY}`,
@@ -24,15 +18,14 @@ export const supabase = createClient(
   }
 );
 
-// Tells Supabase Auth to continuously refresh the session automatically
-// if the app is in the foreground. When this is added, you will continue
-// to receive `onAuthStateChange` events with the `TOKEN_REFRESHED` or
-// `SIGNED_OUT` event if the user's session is terminated. This should
-// only be registered once.
-AppState.addEventListener("change", (state) => {
+const subscription = AppState.addEventListener("change", (state) => {
   if (state === "active") {
     supabase.auth.startAutoRefresh();
   } else {
     supabase.auth.stopAutoRefresh();
   }
 });
+
+export const cleanup = () => {
+  subscription.remove();
+};
