@@ -27,11 +27,6 @@ Instructions on how to add .env:
 1. Sign up and verify your email, then return to the app
 2. Complete the onboarding process (prompted by app)
 
-> If you'd like to test the app using our demo account, the credentials are:
->
-> - demo account removed
-> - REDACTED
-
 We hope you enjoy trying our app!
 
 # Backend
